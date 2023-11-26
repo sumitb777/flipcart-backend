@@ -5,8 +5,12 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const routes = require('./routes/approutes')
 const port = process.env.port || 4000;
-// const mongoUrl = 'mongodb+srv://@zomato-cluster.pxfl14v.mongodb.net/Filpcart-clone';
-const mongoUrl = process.env.mongo_uri;
+
+const mongopass = process.env.mongopass;
+
+const mongoUrl = `mongodb+srv://admin:${mongopass}@zomato-cluster.pxfl14v.mongodb.net/Filpcart-clone`;
+
+
 app.use(cors());
 
 app.use(express.json()); // json format

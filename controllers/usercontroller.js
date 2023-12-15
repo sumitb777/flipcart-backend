@@ -20,7 +20,7 @@ module.exports.createuser = async (req, res) => {
             result
         })
     } else {
-        res.sen({
+        res.send({
             status: false,
             massage: "user not created"
         })
@@ -58,7 +58,6 @@ module.exports.login = async (req, res) => {
         res.send({
             status: false,
             massage: "login unsucessfull",
-
         })
 
     )

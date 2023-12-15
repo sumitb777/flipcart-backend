@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const schema = mongoose.Schema;
 
-const userschema = ({
+const userschema = new schema({
     username: { type: String },
     mobile: { type: Number },
     city: { type: String },
@@ -10,6 +10,6 @@ const userschema = ({
 
 })
 
-const usermodel = schema.model('user', userschema,'users')
+const usermodel = mongoose.model('user', userschema,'users')
 
 module.exports = usermodel;

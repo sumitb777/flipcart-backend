@@ -33,7 +33,7 @@ module.exports.login = async (req, res) => {
 
     const data = req.body;
 
-    const result = await usermodel.find({
+    const result = await usermodel.findOne({
         username: data.username,
         password: data.password
     }, {

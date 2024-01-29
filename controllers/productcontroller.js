@@ -106,7 +106,7 @@ if(type){
 
     }
     
-  let result= await productmodel.find({'product_type':type},payload);
+  let result= await productmodel.find(payload);
   res.send({
     status:"true",
     result

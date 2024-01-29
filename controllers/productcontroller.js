@@ -89,25 +89,24 @@ if(type){
     payload['product_type']=type
 
 }
-    if(type,minprice,maxprice){
+      if(type,minprice,maxprice){
         payload['product_type']=type;
+        payload['price'[0]]={$lte:maxprice,$gte:minprice};
+
+    }
+     if(type,discount){
+        payload['product_type']=type;
+        payload['discount']={$gte:discount};
+
+    }
+     if(type,discount,minprice,maxprice){
+        payload['product_type']=type;
+        payload['discount']={$gte:discount};
         payload['price'[0]]={$lte:minprice,$gte:maxprice};
 
     }
-    else if(type,discount){
-        payload['product_type']=type;
-        payload['discount']={$gte:discount};
-
-    }
-    else if(type,discount,minprice,maxprice){
-        payload['product_type']=type;
-        payload['discount']={$gte:discount};
-        payload['price'[0]]={$lte:minprice,$gte:maxprice};
-
-    }
-    else{
-    }
-  let result= await productmodel.find(payload);
+    
+  let result= await productmodel.find({'product_type':type},payload);
   res.send({
     status:"true",
     result

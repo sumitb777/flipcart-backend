@@ -89,7 +89,7 @@ let payload={}
     }
     else if(type,minprice,maxprice){
         payload['type']=type;
-        payload['price']={$lte:minprice,$gte:maxprice};
+        payload['price'[0]]={$lte:minprice,$gte:maxprice};
 
     }
     else if(type,discount){
@@ -100,7 +100,7 @@ let payload={}
     else if(type,discount,minprice,maxprice){
         payload['type']=type;
         payload['discount']={$gte:discount};
-        payload['price']={$lte:minprice,$gte:maxprice};
+        payload['price'[0]]={$lte:minprice,$gte:maxprice};
 
     }
   let result= await productmodel.find(payload);

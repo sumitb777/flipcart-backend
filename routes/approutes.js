@@ -20,6 +20,7 @@ routes.post('/confirmPayment', paymentController.confirmPayment)
 routes.post('/create-user', usercontroller.createuser)
 routes.post('/login', usercontroller.login)
 
+routes.get('/get-getfiltertype/:type', productcontroller.getfiltertype);
 
 
 

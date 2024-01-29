@@ -78,3 +78,30 @@ module.exports.getproductbyid = async (req, res) => {
         result
     });
 }
+
+module.exports.getfiltertype=async(req,res)=>{
+
+    let{minprice,maxprice,discount}=req.body;
+let{type}=req.params;
+let payload={}
+    if(type){
+   payload['type']=type;
+    }
+    else if(type,minprice,maxprice){
+        payload['type']=type;
+        payload['price']={$lte:minprice,$gte:maxprice};
+
+    }
+    else if(type,discount){
+        payload['type']=type;
+        payload['discount']={$gte:discount};
+
+    }
+    else if(type,discount,minprice,maxprice){
+        payload['type']=type;
+        payload['discount']={$gte:discount};
+        payload['price']={$lte:minprice,$gte:maxprice};
+
+    }
+
+}

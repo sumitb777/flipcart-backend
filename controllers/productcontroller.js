@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 
 
 module.exports.createproduct = async (req, res) => {
-    const { id, product_type, name, short_des, rating, price, warranty, highlights, description, image, img, pimg } = req.body;
+    const { id, product_type, name, short_des, rating, price, warranty, highlights,
+         description, image, img, pimg } = req.body;
 
     let createproduct = new productmodel({
         id: id,
@@ -84,21 +85,19 @@ module.exports.getfiltertype=async(req,res)=>{
     let{minprice,maxprice,discount}=req.body;
 let{type}=req.params;
 let payload={}
-    if(type){
-        payload['product_type']=type;
-    }
-    else if(type,minprice,maxprice){
-        payload['product_type']=type;
+
+    if(type,minprice,maxprice){
+        // payload['product_type']=type;
         payload['price'[0]]={$lte:minprice,$gte:maxprice};
 
     }
     else if(type,discount){
-        payload['product_type']=type;
+        // payload['product_type']=type;
         payload['discount']={$gte:discount};
 
     }
     else if(type,discount,minprice,maxprice){
-        payload['product_type']=type;
+        // payload['product_type']=type;
         payload['discount']={$gte:discount};
         payload['price'[0]]={$lte:minprice,$gte:maxprice};
 

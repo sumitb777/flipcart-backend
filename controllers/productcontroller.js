@@ -87,20 +87,23 @@ let{type}=req.params;
 let payload={}
 
     if(minprice,maxprice){
-        // payload['product_type']=type;
+        payload['product_type']=type;
         payload['price'[0]]={$lte:minprice,$gte:maxprice};
 
     }
     else if(discount){
-        // payload['product_type']=type;
+        payload['product_type']=type;
         payload['discount']={$gte:discount};
 
     }
     else if(discount,minprice,maxprice){
-        // payload['product_type']=type;
+        payload['product_type']=type;
         payload['discount']={$gte:discount};
         payload['price'[0]]={$lte:minprice,$gte:maxprice};
 
+    }
+    else{
+payload['product_type']=type
     }
   let result= await productmodel.find({product_type:type, payload});
   res.send({

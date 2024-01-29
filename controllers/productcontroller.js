@@ -102,7 +102,7 @@ if(type){
      if(type,discount,minprice,maxprice){
         payload['product_type']=type;
         payload['discount']={$gte:discount};
-        payload['price'[0]]={$lte:minprice,$gte:maxprice};
+        payload['price.0']={$lte:minprice,$gte:maxprice};
 
     }
     

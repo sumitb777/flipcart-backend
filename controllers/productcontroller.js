@@ -85,20 +85,20 @@ module.exports.getfiltertype=async(req,res)=>{
 let{type}=req.params;
 let payload={}
     if(type){
-        payload['type']=type;
+        payload['product_type']=type;
     }
     else if(type,minprice,maxprice){
-        payload['type']=type;
+        payload['product_type']=type;
         payload['price'[0]]={$lte:minprice,$gte:maxprice};
 
     }
     else if(type,discount){
-        payload['type']=type;
+        payload['product_type']=type;
         payload['discount']={$gte:discount};
 
     }
     else if(type,discount,minprice,maxprice){
-        payload['type']=type;
+        payload['product_type']=type;
         payload['discount']={$gte:discount};
         payload['price'[0]]={$lte:minprice,$gte:maxprice};
 

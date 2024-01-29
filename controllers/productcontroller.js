@@ -85,7 +85,7 @@ module.exports.getfiltertype=async(req,res)=>{
 let{type}=req.params;
 let payload={}
     if(type){
-   payload['type']=type;
+        payload['type']=type;
     }
     else if(type,minprice,maxprice){
         payload['type']=type;
@@ -103,5 +103,9 @@ let payload={}
         payload['price']={$lte:minprice,$gte:maxprice};
 
     }
-
+  let result= await productmodel.find(payload);
+  res.send({
+    status:"true",
+    result
+  })
 }

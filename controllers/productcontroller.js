@@ -107,8 +107,15 @@ if(type){
     }
     
   let result= await productmodel.find(payload);
+  if(result){
   res.send({
     status:"true",
     result
-  })
+  })} 
+  else{
+    res.send({
+        status:"false",
+        
+      })}
+  
 }

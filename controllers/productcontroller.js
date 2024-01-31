@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 module.exports.createproduct = async (req, res) => {
     const { id, product_type, name, short_des, rating, price, warranty, highlights,
-         description, image, img, pimg } = req.body;
+        description, image, img, pimg } = req.body;
 
     let createproduct = new productmodel({
         id: id,
@@ -80,42 +80,48 @@ module.exports.getproductbyid = async (req, res) => {
     });
 }
 
-module.exports.getfiltertype=async(req,res)=>{
+module.exports.getfiltertype = async (req, res) => {
 
-    let{minprice,maxprice,discount}=req.body;
-let{type}=req.params;
-let payload={}
-if(type){
-    payload['product_type']=type
-
-}
-      if(type,minprice,maxprice){
-        payload['product_type']=type;
-        payload['price.0']={$lte:maxprice,$gte:minprice};
+    let {type, minprice, maxprice, discount } = req.body;
+    // let { type } = req.params;
+    let payload = {};
+    if (type) {
+        payload['product_type'] = type
 
     }
-     if(type,discount){
-        payload['product_type']=type;
-        payload['discount']={$gte:discount};
+   if (type, minprice, maxprice) {
+        payload['product_type'] = type;
+        payload["price.0"] = { $lt: maxprice };
+        payload["price.0"] = { $gt: minprice };
 
     }
-     if(type,discount,minprice,maxprice){
-        payload['product_type']=type;
-        payload['discount']={$gte:discount};
-        payload['price.0']={$lte:minprice,$gte:maxprice};
+   if (type, discount) {
+        payload['product_type'] = type;
+        payload['price.2'] = { $gte: discount };
 
     }
-    
-  let result= await productmodel.find(payload);
-  if(result){
-  res.send({
-    status:"true",
-    result
-  })} 
-  else{
-    res.send({
-        status:"false",
-        
-      })}
-  
+   if (type, discount, minprice, maxprice) {
+        payload['product_type'] = type;
+        // payload['price.2'] = { $gte: discount };
+        payload['price.0'] = { $lt: maxprice ,$gt: minprice};
+        // payload['price.0'] = { $gt: minprice };
+
+    }
+
+    let result = await productmodel.find(payload);
+    console.log( payload)
+    // console.log( result)
+
+    if (result) {
+        res.send({
+            status: "true",
+            result
+        })
+    } else {
+        res.send({
+            status: "false",
+
+        })
+    }
+
 }

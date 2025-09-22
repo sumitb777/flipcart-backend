@@ -1,7 +1,7 @@
 const productmodel = require('../models/productmodel');
 const mongoose = require('mongoose');
 
-
+// for adding product
 module.exports.createproduct = async (req, res) => {
     const { id, product_type, name, short_des, rating, price, warranty, highlights,
         description, image, img, pimg } = req.body;
